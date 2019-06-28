@@ -1,0 +1,56 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+@import 'navbar';
+
+@import '../../public/backend_assets/css/landing-page.css';
+@import '../../public/backend_assets/css/pe-icon-7-stroke.css';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Fontawesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+.carousel-indicators li {
+    border-radius: 50%;
+    width: 1.5rem;
+    background-color: #315cc0;
+}
+
+footer nav > ul a:not(.btn) {
+    color: #fefefe !important;
+}
+
+.footer .copyright {
+    color: #fefefe !important;
+}
+
+.btn-info.btn-fill {
+    color: white;
+    background-color: #315cc0;
+}
+
+.btn-blue {
+    color: white;
+    background-color: #315cc0;
+}
+
+.header-text {
+    line-height: 40px;
+}
+
+.landing-page .section-features .card.card-blue .icon i {
+    color: #315cc0;
+}
+
+@media (min-width: 768px){
+.dropdown .dropdown-menu {
+    top: 89px !important;
+}
+}

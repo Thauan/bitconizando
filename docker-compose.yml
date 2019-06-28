@@ -1,0 +1,22 @@
+version: '2'
+
+volumes:
+  tlo-mysql-data:
+    driver: local
+
+networks:
+  default:
+
+services:
+  tlo-mysql:
+    image: mysql:5.6
+    container_name: tlo-mysql
+    volumes:
+      - tlo-mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=r00td4t4b4s3
+      - MYSQL_DATABASE=tlo_crypto
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=r00td4t4b4s3
+    ports:
+      - 3308:3306

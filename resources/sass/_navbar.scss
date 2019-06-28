@@ -1,0 +1,95 @@
+ol, ul {	
+    list-style: none;
+}
+
+.navbar-nav{
+    font-size: 2rem;
+}
+
+.mt-8{
+    margin-top: 8rem;
+}
+
+.bg-orange{
+    background-color: #f6a033;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(255, 255, 255)!important;
+}
+
+.sticky{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background: #315cc0;
+    //opacity: 0.9;
+    height: 85px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-login{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background: #315cc0;
+    //opacity: 0.9;
+    height: 85px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-toggler {
+    background-color: #eeeeee !important;
+    font-size: 1.4rem;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+    .sticky {
+        height: 120px;
+    }
+
+    .nav-login {
+        height: 120px;
+    }
+
+    .navbar-collapse{
+        background: rgb(49, 92, 192);
+        margin: 0px;
+    }
+
+    .navbar-nav{
+        text-align: center;
+    }
+
+
+    .landing-page .carousel-indicators {
+     bottom: 0;
+    }
+
+    .landing-page .section-presentation img{
+        display: none;
+    }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .sticky {
+        height: 120px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
