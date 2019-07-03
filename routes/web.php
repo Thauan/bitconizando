@@ -26,15 +26,15 @@ Route::get('/', function () {
 //Route::get('login', 'PassportController@login')->name('login');
 //Route::get('register', 'PassportController@register')->name('register');
  
-Route::middleware('auth:api')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-});
+//Route::middleware('auth:api')->group(function () {
+//    Route::get('/home', 'HomeController@index')->name('home');
+//});
 
 
 
 Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::group(['middleware' => 'api', 'auth:api'], function() {
-//    Route::get('/home', 'HomeController@index')->name('home');
-//});
+Route::group(['middleware' => 'api', 'auth:api'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+});

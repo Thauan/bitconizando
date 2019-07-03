@@ -71,7 +71,7 @@
                     </div>
                 </nav>-->
     <header>
-        <nav class="navbar fixed-top navbar-light navbar-expand-md">
+        <nav class="menu navbar fixed-top navbar-light navbar-expand-md">
             <a href="#home">
                 <img class="navbar-brand" src="backend_assets/img/new_logo.png" id="logo_custom" width="90px"  alt="logo">
             </a>

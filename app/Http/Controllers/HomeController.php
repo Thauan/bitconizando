@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Util\Bitcoin;
 use GuzzleHttp\Client;
 use Auth;
-//use function GuzzleHttp\json_encode;
+use function GuzzleHttp\json_decode;
 
 class HomeController extends Controller
 {
