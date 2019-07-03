@@ -36,5 +36,11 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'api', 'auth:api'], function() {
+    Route::get('/api', 'ApiController@index')->name('api');
+});
+
+Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
+

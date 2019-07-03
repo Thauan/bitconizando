@@ -19,15 +19,17 @@
                         <div class="card">
                                 <div class="card-body">
                                     <h1>
-                                            <p class="badge {{ $item['type'] === 'buy' ? 'badge-dark' : 'badge-success' }}">
                                                 @if($item['type'] === 'buy')
-                                                    Comprar
+                                                    <p class="badge badge-dark">
+                                                        Comprar
+                                                    </p>
                                                 @endif
 
                                                 @if($item['type'] === 'sell')
-                                                    Vender
-                                                @endif
-                                            </p>    
+                                                    <p style="background-color:green" class="badge badge-primary">
+                                                        Vender
+                                                    </p>
+                                                @endif      
                                     </h1>
                                     <p class="text-currency"><i style="color:darkgreen" class="fas fa-dollar-sign"></i> {{ $item['price'] }}</p>
                                     <p class="text-currency"><i style="color:darkslateblue;" class="fas fa-sort"></i> {{ $item['amount'] }}</p>
