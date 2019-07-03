@@ -2262,6 +2262,18 @@ ul {
   list-style: none;
 }
 
+.menu-bar {
+  margin-top: 5.3rem;
+  background: white;
+  color: blue;
+  font-size: 1.5rem;
+  text-align: end;
+}
+
+.menu-bar a {
+  padding: 1rem;
+}
+
 .navbar-nav {
   font-size: 2rem;
 }
@@ -2272,6 +2284,10 @@ ul {
 
 .bg-orange {
   background-color: #f6a033;
+}
+
+.text-orange {
+  color: #f6a033;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -19293,6 +19309,10 @@ readers do not read off random characters that represent icons */
 
 .fab {
   font-family: "Font Awesome 5 Brands";
+}
+
+.text-currency {
+  font-size: 1.2rem;
 }
 
 .carousel-indicators li {

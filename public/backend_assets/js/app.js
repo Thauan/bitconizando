@@ -49502,8 +49502,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/thauan/Workspace/laravel/tlo-web-admin/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/thauan/Workspace/laravel/tlo-web-admin/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/thauan/Workspace/laravel/bitconizando/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/thauan/Workspace/laravel/bitconizando/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -44,23 +44,40 @@
             {{ Auth::user()->name }} <span class="caret"></span>
         </a>
     
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
+        <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href=" route('logout') }}"
                onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+                __('Logout')
             </a>
     
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-        </div>
+        </div>-->
     </li>
 @endguest 
                          </ul>
                      </div>  
                     </nav>
-
+@auth
+<div class="menu-bar">
+    <a href="#">
+            <i class="fas fa-user-circle"></i> {{ __('Perfil') }}
+     </a>
+     <a href="#">
+            <i class="fas fa-users-cog"></i> {{ __('Configurações') }}
+     </a>
+     <a href="{{ route('logout') }}"
+     onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+      <i class="fas fa-sign-out-alt"></i> {{ __('Sair') }}
+  </a>
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+</div>
+@endauth 
         <main class="py-4 mt-8">
             @yield('content')
         </main>

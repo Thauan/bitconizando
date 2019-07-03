@@ -6,20 +6,24 @@ use GuzzleHttp\Client;
 class Bitcoin
 {
 	protected $client;
+	public $cryptocurrency;
 
 	public function __construct(Client $client)
 	{
 		$this->client = $client;
+		
 	}
 
 	public function all()
 	{
-		return $this->endpointRequest('BTC/trades/');
+		$cryptocurrency = "BTC";
+		
+		return $this->endpointRequest($cryptocurrency.'/trades');
 	}
 
 	public function findById($id)
 	{
-		return $this->endpointRequest('BTC/trades/?tid='.$id);
+		return $this->endpointRequest('trades/?tid='.$id);
 	}
 
 	public function endpointRequest($url)

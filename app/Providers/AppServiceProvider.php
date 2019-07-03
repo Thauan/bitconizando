@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use GuzzleHttp\Client;
 
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,13 +14,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $baseUrl = env('COIN_GECKO_BASE_URL');
+        //$baseUrl = 'https://www.mercadobitcoin.net/api/';
 
-        $this->app->singleton('GuzzleHttp\Client', function($api) use ($baseUrl) {
-            return new Client([
-                'base_uri' => $baseUrl,
-            ]);
-        });
+        //$this->app->singleton('GuzzleHttp\Client', function($api) use ($baseUrl) {
+        //    return new Client([
+        //        'base_uri' => $baseUrl,
+        //        'headers' => [
+        //            'content-type' => 'application/json',
+        //            'Accept' => 'application/json',
+        //            //'Authorization' => 'Bearer '.$access_token,
+        //        ],
+        //    ]);
+        //});
+
     }
 
     /**
@@ -31,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         \Illuminate\Support\Facades\Schema::defaultStringLength(191);
     }
 }

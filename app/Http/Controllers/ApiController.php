@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Util\Bitcoin;
+use GuzzleHttp\Client;
 
 class ApiController extends Controller
 {
@@ -17,7 +18,13 @@ class ApiController extends Controller
     public function index()
     {
     	// Get all the post
-    	$cryptos = $this->crypto->all();
+        //$cryptos = $this->crypto->all();
+        $client = new Client;
+        $response = $client->get('https://www.mercadobitcoin.net/api/BTC/trades/');
+        $cryptos = $response->getBody()->getContents();
+        $cryptos = json_decode($cryptos, true);
+
+        //dd($json);
 
     	return view('someview', dd(compact('cryptos')));
     }

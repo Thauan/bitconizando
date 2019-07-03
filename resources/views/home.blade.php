@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h1>BITCOIN</h1>
+                    <h1 class="text-orange"><i class="fab fa-bitcoin"></i> BITCOIN</h1>
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -18,9 +18,11 @@
                     @foreach ($cryptos as $item)
                         <div class="card">
                                 <div class="card-body">
-                        <h1>{{ $item->type }}</h1> -
-                        {{ $item->price }} -
-                        {{ $item->amount }}
+                                    <h1>
+                                            <p class="badge {{ $item['type'] === 'buy' ? 'badge-dark' : 'badge-primary' }}">{{ $item['type'] }}</p>    
+                                    </h1>
+                                    <p class="text-currency"><i style="color:darkgreen" class="fas fa-dollar-sign"></i> {{ $item['price'] }}</p>
+                                    <p class="text-currency"><i style="color:darkslateblue;" class="fas fa-sort"></i> {{ $item['amount'] }}</p>
                                 </div>
                         </div>
                     @endforeach
