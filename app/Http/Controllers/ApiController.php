@@ -20,18 +20,18 @@ class ApiController extends Controller
     {
         $token = Auth()->user()->api_token;
 
-        $headers = [
-            'Authorization' => 'Bearer ' . $token,  
+        dd($headers = [
+            'Authorization' => 'Bearer ' .$token,  
             'Content-Type' => 'application/json',      
             'Accept'        => 'application/json',
-        ];
+        ]);
 
     	// Get all the post
         $client = new Client;
         $response = $client->get('https://www.mercadobitcoin.net/api/BTC/trades/', [
         'headers' => $headers
         ]);
-        
+
         $cryptos = $response->getBody()->getContents();
         $cryptos = json_decode($cryptos, true);
         //dd($json);

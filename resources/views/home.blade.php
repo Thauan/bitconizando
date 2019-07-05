@@ -31,6 +31,9 @@
                                                     </p>
                                                 @endif      
                                     </h1>
+                                    <p class="badge badge-primary">
+                                            ID {{ $item['tid'] }}
+                                    </p>
                                     <p class="text-currency"><i style="color:darkgreen" class="fas fa-dollar-sign"></i> {{ $item['price'] }}</p>
                                     <p class="text-currency"><i style="color:darkslateblue;" class="fas fa-sort"></i> {{ $item['amount'] }}</p>
                                 </div>
