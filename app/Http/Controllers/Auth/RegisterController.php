@@ -84,9 +84,11 @@ class RegisterController extends Controller
     $this->validator($request->all())->validate();
 
     // A Registered event is created and will trigger any relevant
-    // observers, such as sending a confirmation email or any 
+    // observers, such as sending a confirmation email or any
     // code that needs to be run as soon as the user is created.
-    event(new Registered($user = $this->create($request->all())));
+    // event(new Registered(
+
+    $user = $this->create($request->all());
 
     // After the user is created, he's logged in.
     $this->guard()->login($user);
