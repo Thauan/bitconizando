@@ -66,6 +66,26 @@
                 </div>
             </div>
         </div>
+        <div class="row text-center">
+            <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center" style="font-size: 1rem; color: #f6a033;">
+                      <p><i class="fas fa-user-circle"></i> Carlos André</p>
+                      <p><i class="fas fa-at"></i> crlandre@gmail.com</p>
+                      <p><i class="fas fa-unlock"></i> 1234</p>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-6">
+                    <div class="card">
+                            <div class="card-body text-center" style="font-size: 1rem; color: #f6a033;">
+                                  <p><i class="fas fa-user-circle"></i> Thauan</p>
+                                  <p><i class="fas fa-at"></i> thauan@gmail.com</p>
+                                  <p><i class="fas fa-unlock"></i> 1234</p>
+                            </div>
+                        </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
