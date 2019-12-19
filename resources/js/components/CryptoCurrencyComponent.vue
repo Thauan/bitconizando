@@ -1,10 +1,11 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12" v-for="(value, key) in cryptos">
+            <div class="col-md-12 col-lg-12" v-for="(item, key) in cryptos" v-bind:key="item.key">
                 <div class="card shadow m-2">
                     <div class="card-body">
-                        <h2>{{ key }}</h2> ${{ value.USD }}
+                        <span class="left">{{ key }}</span>
+                        <span class="right">$ {{ item.USD }}</span>
                     </div>
                 </div>
             </div>
@@ -26,7 +27,7 @@
             axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR')
             .then(response =>{
                 this.cryptos = response.data
-                // console.log(response)
+                console.log(response)
             })
             .catch(e =>{
                 this.errors.push(e);
@@ -38,3 +39,15 @@
         }
     }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+  span.left {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  span.right {
+    float:right;
+    font-size: 20px;
+  }
+</style>
