@@ -18,24 +18,13 @@
                     @foreach ($cryptos as $item)
                         <div class="card">
                                 <div class="card-body">
-                                    <h1>
-                                                @if($item['type'] === 'buy')
-                                                    <p class="badge badge-dark">
-                                                        Comprar
-                                                    </p>
-                                                @endif
-
-                                                @if($item['type'] === 'sell')
-                                                    <p style="background-color:green" class="badge badge-primary">
-                                                        Vender
-                                                    </p>
-                                                @endif      
-                                    </h1>
+                                <h3>
                                     <p class="badge badge-primary">
-                                            ID {{ $item['tid'] }}
+                                            {{ $item['exchange_id'] }}
                                     </p>
-                                    <p class="text-currency"><i style="color:darkgreen" class="fas fa-dollar-sign"></i> {{ $item['price'] }}</p>
-                                    <p class="text-currency"><i style="color:darkslateblue;" class="fas fa-sort"></i> {{ $item['amount'] }}</p>
+                                </h>
+                                    <p class="text-currency"><i style="color:darkgreen" class="fas fa-dollar-sign"></i> {{ $item['volume_1day_usd'] }}</p>
+                                    <p class="text-currency"><i style="color:darkslateblue;" class="fas fa-sort"></i> {{ $item['data_symbols_count'] }}</p>
                                 </div>
                         </div>
                     @endforeach
