@@ -1,4 +1,4 @@
-$('.navbar>li>a').on('click', function(){
+$('.navbar-nav>li>a').on('click', function(){
     $('.navbar-collapse').collapse('hide');
 });
 
@@ -7,7 +7,7 @@ $('.navbar>li>a').on('click', function(){
 // Verificar a distância entre o alvo e o topo
 // Animar o scroll até o alvo
 
-const menuItems = document.querySelectorAll('.navbar a[href^="#"]');
+const menuItems = document.querySelectorAll('.menu a[href^="#"]');
 const footerMenuItems = document.querySelectorAll('.page-footer a[href^="#"]');
 
 function getScrollTopByHref(element) {

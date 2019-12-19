@@ -21,11 +21,14 @@
 </head>
 <body class="bg-orange">
     <div id="app">
-        <nav class="navbar fixed-top navbar-light nav-login navbar-expand-md">
-                <img class="navbar-brand" src="backend_assets/img/new_logo.png" id="logo_custom" width="90px"  alt="logo">
+        <nav class="navbar fixed-top navbar-light nav-login navbar-expand-md p-0">
+
+            <img class="navbar-brand" src="backend_assets/img/new_logo.png" id="logo_custom" width="90px"  alt="logo">
+            <div class="p-3">
                    <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                        <span class="navbar-toggler-icon "></span>
                    </button>
+            </div>
                      <div class="collapse navbar-collapse " id="collapsibleNavbar">
                          <ul class="navbar-nav ml-auto ">
 <!-- Authentication Links -->
@@ -39,26 +42,25 @@
     </li>
 @endif
 @else
-<li class="nav-item dropdown">
+    <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }} <span class="caret"></span>
         </a>
-    
+    </li>
         <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href=" route('logout') }}"
                onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
                 __('Logout')
             </a>
-    
+
             <form id="logout-form" action="route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         </div>-->
-    </li>
-@endguest 
+@endguest
                          </ul>
-                     </div>  
+                     </div>
                     </nav>
 @auth
 <div class="menu-bar">
@@ -77,7 +79,7 @@
         @csrf
     </form>
 </div>
-@endauth 
+@endauth
         <main class="py-4 mt-8">
             @yield('content')
         </main>
@@ -85,7 +87,7 @@
 </body>
     <script src="{{ asset('backend_assets/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend_assets/js/bootstrap.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('backend_assets/js/awesome-landing-page.js')}}" type="text/javascript"></script>    
+    <script src="{{ asset('backend_assets/js/awesome-landing-page.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
     $('.dropdown-toggle').click(function(){
       $('.dropdown-menu').toggleClass('show');
