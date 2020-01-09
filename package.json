@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "vue-owl-carousel2": "^2.0.7",
         "vue-spinner": "^1.0.3"
     }
 }
