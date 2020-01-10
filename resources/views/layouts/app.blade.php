@@ -81,7 +81,7 @@
             </form>
         </div>
         @endauth
-        <main class="py-4 mt-3">
+        <main class="py-4 mt-5">
             @yield('content')
         </main>
     </div>

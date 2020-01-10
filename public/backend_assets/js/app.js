@@ -1872,6 +1872,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1888,8 +1894,8 @@ __webpack_require__.r(__webpack_exports__);
       screen: {},
       loading: true,
       errors: [],
-      cryptocurrency: ["BTC", "ETH"],
-      currency: ["USD", "EUR"],
+      cryptocurrency: ["BTC"],
+      currency: ["USD"],
       breakpoints: this.sizeRecognition()
     };
   },
@@ -1903,7 +1909,14 @@ __webpack_require__.r(__webpack_exports__);
       _this.errors.push(e);
 
       _this.loading = false;
-      console.log(_this.errors);
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=".concat(this.currency)).then(function (response) {
+      _this.cryptocurrency = response.data.Data;
+      _this.loading = false;
+    })["catch"](function (e) {
+      _this.errors.push(e);
+
+      _this.loading = false;
     });
     this.sizeRecognition();
   },
@@ -38264,27 +38277,30 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c(
-        "carousel",
-        {
-          attrs: {
-            autoplay: true,
-            items: _vm.breakpoints,
-            nav: false,
-            dots: true,
-            loop: true
-          }
-        },
-        [
-          _c("div", { staticClass: "cardItem" }, [
-            _c("div", { staticClass: "currencyItem" }, [
-              _c("i", { staticClass: "fab fa-3x fa-bitcoin" }),
-              _vm._v(" "),
-              _c("h4", { staticClass: "text-center" }, [_vm._v("Bitcoin")])
-            ])
-          ])
-        ]
-      ),
+      this.cryptocurrency && !this.loading
+        ? _c(
+            "carousel",
+            {
+              attrs: {
+                items: _vm.breakpoints,
+                nav: false,
+                dots: true,
+                loop: true
+              }
+            },
+            [
+              _c("div", { staticClass: "cardItem" }, [
+                _c("div", { staticClass: "currencyItem" }, [
+                  _c("i", { staticClass: "fab fa-3x fa-bitcoin" }),
+                  _vm._v(" "),
+                  _c("h4", { staticClass: "text-center" }, [
+                    _vm._v(_vm._s(_vm.cryptocurrency[0].CoinInfo.FullName))
+                  ])
+                ])
+              ])
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",

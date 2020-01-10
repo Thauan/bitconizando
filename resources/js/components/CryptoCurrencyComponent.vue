@@ -1,10 +1,16 @@
 <template>
   <div class="container">
-    <carousel :autoplay="true" :items="breakpoints" :nav="false" :dots="true" :loop="true">
+    <carousel
+      v-if="this.cryptocurrency && !this.loading"
+      :items="breakpoints"
+      :nav="false"
+      :dots="true"
+      :loop="true"
+    >
       <div class="cardItem">
         <div class="currencyItem">
           <i class="fab fa-3x fa-bitcoin"></i>
-          <h4 class="text-center">Bitcoin</h4>
+          <h4 class="text-center">{{ cryptocurrency[0].CoinInfo.FullName}}</h4>
         </div>
       </div>
     </carousel>
@@ -43,8 +49,8 @@ export default {
       screen: {},
       loading: true,
       errors: [],
-      cryptocurrency: ["BTC", "ETH"],
-      currency: ["USD", "EUR"],
+      cryptocurrency: ["BTC"],
+      currency: ["USD"],
       breakpoints: this.sizeRecognition()
     };
   },
@@ -61,7 +67,19 @@ export default {
       .catch(e => {
         this.errors.push(e);
         this.loading = false;
-        console.log(this.errors);
+      });
+
+    axios
+      .get(
+        `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=${this.currency}`
+      )
+      .then(response => {
+        this.cryptocurrency = response.data.Data;
+        this.loading = false;
+      })
+      .catch(e => {
+        this.errors.push(e);
+        this.loading = false;
       });
 
     this.sizeRecognition();
