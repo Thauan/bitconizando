@@ -31,22 +31,23 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $cryptocurrency = 'BTC';
+        // $cryptocurrency = 'BTC';
+        // $key = '';
 
+        //     $client = new Client([
+        //         'base_uri' => 'https://rest-sandbox.coinapi.io/v1/',
+        //         'headers' => [
+        //             'Accept' => 'application/json',
+        //             'X-CoinAPI-Key' => $key,
+        //         ],
+        //     ]);
 
-            $client = new Client([
-                'base_uri' => 'https://www.mercadobitcoin.net/api/'.$cryptocurrency,
-                'headers' => [
-                    'Accept' => 'application/json',
-                ],
-         
-            ]);
-      
-        $response = $client->request('GET', 'trades');
-        $cryptos = $response->getBody()->getContents();
-        $cryptos = json_decode($cryptos, true);
+        // $response = $client->request('GET', 'exchanges');
+        // $cryptos = $response->getBody()->getContents();
+        // $cryptos = json_decode($cryptos, true);
 
-        
+        // dd($cryptos);
+
         return view('home', compact('cryptos'));
     }
 }
