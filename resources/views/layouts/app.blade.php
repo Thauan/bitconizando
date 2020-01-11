@@ -21,7 +21,7 @@
     <link href="{{ asset('backend_assets/css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-orange">
+<body class="bg-grey">
     <div id="app">
         <nav class="navbar fixed-top navbar-light nav-login navbar-expand-md p-0">
 

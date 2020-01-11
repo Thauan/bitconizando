@@ -1,32 +1,37 @@
-ol, ul {	
+ol,
+ul {
     list-style: none;
 }
 
-.menu-bar{
+.menu-bar {
     margin-top: 5.3rem;
     background: white;
     color: blue;
     font-size: 1.5rem;
     text-align: end;
 
-    a{
+    a {
         padding: 1rem;
     }
 }
 
-.navbar-nav{
+.navbar-nav {
     font-size: 2rem;
 }
 
-.mt-8{
+.mt-8 {
     margin-top: 8rem;
 }
 
-.bg-orange{
+.bg-orange {
     background-color: #f6a033;
 }
 
-.text-orange{
+.bg-grey {
+    background-color: #2d2d2d;
+}
+
+.text-orange {
     color: #f6a033;
 }
 
@@ -35,10 +40,10 @@ ol, ul {
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: rgb(255, 255, 255)!important;
+    color: rgb(255, 255, 255) !important;
 }
 
-.sticky{
+.sticky {
     position: fixed;
     top: 0;
     right: 0;
@@ -50,7 +55,7 @@ ol, ul {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.nav-login{
+.nav-login {
     position: fixed;
     top: 0;
     right: 0;
@@ -77,21 +82,21 @@ ol, ul {
         height: 120px;
     }
 
-    .navbar-collapse{
+    .navbar-collapse {
         background: rgb(49, 92, 192);
         margin: 0px;
     }
 
-    .navbar-nav{
+    .navbar-nav {
         text-align: center;
     }
 
 
     .landing-page .carousel-indicators {
-     bottom: 0;
+        bottom: 0;
     }
 
-    .landing-page .section-presentation img{
+    .landing-page .section-presentation img {
         display: none;
     }
 

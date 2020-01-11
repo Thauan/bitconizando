@@ -7,11 +7,17 @@
       :dots="true"
       :loop="true"
     >
-      <div class="cardItem">
+      <div class="cardItem" v-for="(item, index) in cryptocurrency" :key="index">
         <div class="currencyItem">
           <i class="fab fa-3x fa-bitcoin"></i>
-          <h4 class="text-center">{{ cryptocurrency[0].CoinInfo.FullName}}</h4>
+          <h4 class="text-center">{{ item['CoinInfo'].Name }}</h4>
         </div>
+        <a class="addButton" v-on:click="addItem(item)">
+          <i class="fas fas-3x fa-plus"></i>
+        </a>
+        <a class="removeButton" v-on:click="removeItem(index)">
+          <i class="fas fas-3x fa-times"></i>
+        </a>
       </div>
     </carousel>
     <div class="row justify-content-center pt-3">
@@ -75,6 +81,7 @@ export default {
       )
       .then(response => {
         this.cryptocurrency = response.data.Data;
+        console.log(this.cryptocurrency);
         this.loading = false;
       })
       .catch(e => {
@@ -109,6 +116,15 @@ export default {
         let item = 5;
         return item;
       }
+    },
+
+    addItem(item) {
+      this.cryptocurrency.push(item["CoinInfo"].Name);
+      console.log(this.cryptocurrency);
+    },
+
+    removeItem(index) {
+      this.cryptocurrency.splice(index, 1);
     }
   },
 
@@ -132,6 +148,26 @@ span.right {
 .currencyItem i {
   padding: 20px;
   color: grey;
+}
+
+.addButton {
+  padding: 8px;
+}
+
+.addButton i {
+  padding: 5px;
+  font-size: 18px;
+  color: green;
+}
+
+.removeButton {
+  padding: 8px;
+}
+
+.removeButton i {
+  padding: 5px;
+  font-size: 18px;
+  color: red;
 }
 
 .currencyItem i:hover {
