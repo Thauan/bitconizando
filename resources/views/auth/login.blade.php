@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg p-3 mb-5 bg-white rounded">
@@ -16,9 +16,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -30,9 +30,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -56,9 +56,9 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Esqueceu sua senha?') }}
-                                    </a>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Esqueceu sua senha?') }}
+                                </a>
                                 @endif
                             </div>
                         </div>
@@ -66,26 +66,26 @@
                 </div>
             </div>
         </div>
-        <div class="row text-center">
+        <!-- <div class="row text-center">
             <div class="col-md-6">
-            <div class="card">
-                <div class="card-body text-center" style="font-size: 1rem; color: #f6a033;">
-                      <p><i class="fas fa-user-circle"></i> Carlos André</p>
-                      <p><i class="fas fa-at"></i> crlandre@gmail.com</p>
-                      <p><i class="fas fa-unlock"></i> 1234</p>
+                <div class="card">
+                    <div class="card-body text-center" style="font-size: 1rem; color: #f6a033;">
+                        <p><i class="fas fa-user-circle"></i> Carlos André</p>
+                        <p><i class="fas fa-at"></i> crlandre@gmail.com</p>
+                        <p><i class="fas fa-unlock"></i> 1234</p>
+                    </div>
                 </div>
             </div>
-            </div>
             <div class="col-md-6">
-                    <div class="card">
-                            <div class="card-body text-center" style="font-size: 1rem; color: #f6a033;">
-                                  <p><i class="fas fa-user-circle"></i> Thauan</p>
-                                  <p><i class="fas fa-at"></i> thauan@gmail.com</p>
-                                  <p><i class="fas fa-unlock"></i> 1234</p>
-                            </div>
-                        </div>
+                <div class="card">
+                    <div class="card-body text-center" style="font-size: 1rem; color: #f6a033;">
+                        <p><i class="fas fa-user-circle"></i> Thauan</p>
+                        <p><i class="fas fa-at"></i> thauan@gmail.com</p>
+                        <p><i class="fas fa-unlock"></i> 1234</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

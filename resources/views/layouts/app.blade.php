@@ -21,7 +21,7 @@
     <link href="{{ asset('backend_assets/css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-orange">
+<body class="bg-grey">
     <div id="app">
         <nav class="navbar fixed-top navbar-light nav-login navbar-expand-md p-0">
 
@@ -81,7 +81,7 @@
             </form>
         </div>
         @endauth
-        <main class="py-4 mt-3">
+        <main class="py-4 mt-5">
             @yield('content')
         </main>
     </div>

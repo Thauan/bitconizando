@@ -1872,6 +1872,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1888,8 +1900,8 @@ __webpack_require__.r(__webpack_exports__);
       screen: {},
       loading: true,
       errors: [],
-      cryptocurrency: ["BTC", "ETH"],
-      currency: ["USD", "EUR"],
+      cryptocurrency: ["BTC"],
+      currency: ["USD"],
       breakpoints: this.sizeRecognition()
     };
   },
@@ -1903,7 +1915,15 @@ __webpack_require__.r(__webpack_exports__);
       _this.errors.push(e);
 
       _this.loading = false;
-      console.log(_this.errors);
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=".concat(this.currency)).then(function (response) {
+      _this.cryptocurrency = response.data.Data;
+      console.log(_this.cryptocurrency);
+      _this.loading = false;
+    })["catch"](function (e) {
+      _this.errors.push(e);
+
+      _this.loading = false;
     });
     this.sizeRecognition();
   },
@@ -1930,6 +1950,13 @@ __webpack_require__.r(__webpack_exports__);
         var _item4 = 5;
         return _item4;
       }
+    },
+    addItem: function addItem(item) {
+      this.cryptocurrency.push(item["CoinInfo"].Name);
+      console.log(this.cryptocurrency);
+    },
+    removeItem: function removeItem(index) {
+      this.cryptocurrency.splice(index, 1);
     }
   },
   mounted: function mounted() {
@@ -6467,7 +6494,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nspan.left {\n  font-weight: bold;\n  font-size: 25px;\n}\nspan.right {\n  float: right;\n  font-size: 20px;\n}\n.currencyItem i {\n  padding: 20px;\n  color: grey;\n}\n.currencyItem i:hover {\n  padding: 20px;\n  color: orange;\n}\n.cardItem {\n  background: #fff;\n  border-radius: 10px;\n  margin: 10px;\n  padding: 15px;\n}\n", ""]);
+exports.push([module.i, "\nspan.left {\n  font-weight: bold;\n  font-size: 25px;\n}\nspan.right {\n  float: right;\n  font-size: 20px;\n}\n.currencyItem i {\n  padding: 20px;\n  color: grey;\n}\n.addButton {\n  padding: 8px;\n}\n.addButton i {\n  padding: 5px;\n  font-size: 18px;\n  color: green;\n}\n.removeButton {\n  padding: 8px;\n}\n.removeButton i {\n  padding: 5px;\n  font-size: 18px;\n  color: red;\n}\n.currencyItem i:hover {\n  padding: 20px;\n  color: orange;\n}\n.cardItem {\n  background: #fff;\n  border-radius: 10px;\n  margin: 10px;\n  padding: 15px;\n}\n", ""]);
 
 // exports
 
@@ -38264,27 +38291,57 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c(
-        "carousel",
-        {
-          attrs: {
-            autoplay: true,
-            items: _vm.breakpoints,
-            nav: false,
-            dots: true,
-            loop: true
-          }
-        },
-        [
-          _c("div", { staticClass: "cardItem" }, [
-            _c("div", { staticClass: "currencyItem" }, [
-              _c("i", { staticClass: "fab fa-3x fa-bitcoin" }),
-              _vm._v(" "),
-              _c("h4", { staticClass: "text-center" }, [_vm._v("Bitcoin")])
-            ])
-          ])
-        ]
-      ),
+      this.cryptocurrency && !this.loading
+        ? _c(
+            "carousel",
+            {
+              attrs: {
+                items: _vm.breakpoints,
+                nav: false,
+                dots: true,
+                loop: true
+              }
+            },
+            _vm._l(_vm.cryptocurrency, function(item, index) {
+              return _c("div", { key: index, staticClass: "cardItem" }, [
+                _c("div", { staticClass: "currencyItem" }, [
+                  _c("i", { staticClass: "fab fa-3x fa-bitcoin" }),
+                  _vm._v(" "),
+                  _c("h4", { staticClass: "text-center" }, [
+                    _vm._v(_vm._s(item["CoinInfo"].Name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "addButton",
+                    on: {
+                      click: function($event) {
+                        return _vm.addItem(item)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fas-3x fa-plus" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "removeButton",
+                    on: {
+                      click: function($event) {
+                        return _vm.removeItem(index)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fas-3x fa-times" })]
+                )
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
