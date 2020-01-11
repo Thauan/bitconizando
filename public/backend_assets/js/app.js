@@ -1906,31 +1906,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://min-api.cryptocompare.com/data/pricemulti?fsyms=".concat(this.cryptocurrency, "&tsyms=").concat(this.currency)).then(function (response) {
-      _this.cryptos = response.data;
-      _this.loading = false;
-    })["catch"](function (e) {
-      _this.errors.push(e);
-
-      _this.loading = false;
-    });
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=".concat(this.currency)).then(function (response) {
-      _this.cryptocurrency = response.data.Data;
-      console.log(_this.cryptocurrency);
-      _this.loading = false;
-    })["catch"](function (e) {
-      _this.errors.push(e);
-
-      _this.loading = false;
-    });
     this.sizeRecognition();
+    this.fetchCryptos();
+    this.fetchCryptocurrency();
   },
   methods: {
     sizeElement: function sizeElement() {
-      this.screen = window.innerWidth; //   console.log("Tamanho da tela " + this.screen + "px");
-
+      this.screen = window.innerWidth;
       return this.screen;
     },
     sizeRecognition: function sizeRecognition() {
@@ -1951,16 +1933,41 @@ __webpack_require__.r(__webpack_exports__);
         return _item4;
       }
     },
+    fetchCryptos: function fetchCryptos() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://min-api.cryptocompare.com/data/pricemulti?fsyms=".concat(this.cryptocurrency, "&tsyms=").concat(this.currency)).then(function (response) {
+        _this.cryptos = response.data;
+        _this.loading = false;
+      })["catch"](function (e) {
+        _this.errors.push(e);
+
+        _this.loading = false;
+      });
+    },
+    fetchCryptocurrency: function fetchCryptocurrency() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=".concat(this.currency)).then(function (response) {
+        _this2.cryptocurrency = response.data.Data;
+        console.log(_this2.cryptocurrency);
+        _this2.loading = false;
+      })["catch"](function (e) {
+        _this2.errors.push(e);
+
+        _this2.loading = false;
+      });
+    },
     addItem: function addItem(item) {
       this.cryptocurrency.push(item["CoinInfo"].Name);
-      console.log(this.cryptocurrency);
+      this.fetchCryptos();
+      this.fetchCryptocurrency();
     },
     removeItem: function removeItem(index) {
-      this.cryptocurrency.splice(index, 1);
+      this.$delete(this.cryptocurrency, index);
     }
   },
-  mounted: function mounted() {
-    console.log("Component mounted.");
+  mounted: function mounted() {// console.log("Component mounted.");
   }
 });
 
@@ -6494,7 +6501,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nspan.left {\n  font-weight: bold;\n  font-size: 25px;\n}\nspan.right {\n  float: right;\n  font-size: 20px;\n}\n.currencyItem i {\n  padding: 20px;\n  color: grey;\n}\n.addButton {\n  padding: 8px;\n}\n.addButton i {\n  padding: 5px;\n  font-size: 18px;\n  color: green;\n}\n.removeButton {\n  padding: 8px;\n}\n.removeButton i {\n  padding: 5px;\n  font-size: 18px;\n  color: red;\n}\n.currencyItem i:hover {\n  padding: 20px;\n  color: orange;\n}\n.cardItem {\n  background: #fff;\n  border-radius: 10px;\n  margin: 10px;\n  padding: 15px;\n}\n", ""]);
+exports.push([module.i, "\nspan.left {\n  font-weight: bold;\n  font-size: 25px;\n}\nspan.right {\n  float: right;\n  /* font-size: 20px; */\n}\n.currencyItem i {\n  padding: 20px;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  color: grey;\n}\n.price {\n  font-size: 25px;\n}\n\n/* .addButton {\n  padding: 8px;\n}\n\n.addButton i {\n  padding: 5px;\n  font-size: 18px;\n  color: green;\n}\n\n.removeButton {\n  padding: 8px;\n}\n\n.removeButton i {\n  padding: 5px;\n  font-size: 18px;\n  color: red;\n} */\n.currencyItem i:hover {\n  padding: 20px;\n  color: orange;\n}\n.cardItem {\n  background: #fff;\n  border-radius: 10px;\n  margin: 10px;\n  padding: 15px;\n  padding-top: 2px;\n}\n", ""]);
 
 // exports
 
@@ -38303,41 +38310,45 @@ var render = function() {
               }
             },
             _vm._l(_vm.cryptocurrency, function(item, index) {
-              return _c("div", { key: index, staticClass: "cardItem" }, [
-                _c("div", { staticClass: "currencyItem" }, [
-                  _c("i", { staticClass: "fab fa-3x fa-bitcoin" }),
+              return _c(
+                "div",
+                { key: index, staticClass: "cardItem text-center" },
+                [
+                  _c("div", { staticClass: "currencyItem" }, [
+                    _c("i", { staticClass: "fab fa-3x fa-bitcoin" }),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(item["CoinInfo"].Name))
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c("h4", { staticClass: "text-center" }, [
-                    _vm._v(_vm._s(item["CoinInfo"].Name))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "addButton",
-                    on: {
-                      click: function($event) {
-                        return _vm.addItem(item)
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function($event) {
+                          return _vm.addItem(item)
+                        }
                       }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fas-3x fa-plus" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "removeButton",
-                    on: {
-                      click: function($event) {
-                        return _vm.removeItem(index)
+                    },
+                    [_c("i", { staticClass: "fas fas-3x fa-plus text-white" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: {
+                        click: function($event) {
+                          return _vm.removeItem(index)
+                        }
                       }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fas-3x fa-times" })]
-                )
-              ])
+                    },
+                    [_c("i", { staticClass: "fas fas-3x fa-times text-white" })]
+                  )
+                ]
+              )
             }),
             0
           )
@@ -38363,7 +38374,7 @@ var render = function() {
                   _c("div", { staticClass: "card-body" }, [
                     _c("span", { staticClass: "left" }, [_vm._v(_vm._s(key))]),
                     _vm._v(" "),
-                    _c("span", { staticClass: "right" }, [
+                    _c("span", { staticClass: "right price" }, [
                       _vm._v("$ " + _vm._s(item.USD))
                     ])
                   ])

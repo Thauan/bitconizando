@@ -7,16 +7,16 @@
       :dots="true"
       :loop="true"
     >
-      <div class="cardItem" v-for="(item, index) in cryptocurrency" :key="index">
+      <div class="cardItem text-center" v-for="(item, index) in cryptocurrency" :key="index">
         <div class="currencyItem">
           <i class="fab fa-3x fa-bitcoin"></i>
           <h4 class="text-center">{{ item['CoinInfo'].Name }}</h4>
         </div>
-        <a class="addButton" v-on:click="addItem(item)">
-          <i class="fas fas-3x fa-plus"></i>
+        <a class="btn btn-primary" v-on:click="addItem(item)">
+          <i class="fas fas-3x fa-plus text-white"></i>
         </a>
-        <a class="removeButton" v-on:click="removeItem(index)">
-          <i class="fas fas-3x fa-times"></i>
+        <a class="btn btn-danger" v-on:click="removeItem(index)">
+          <i class="fas fas-3x fa-times text-white"></i>
         </a>
       </div>
     </carousel>
@@ -31,7 +31,7 @@
         <div class="card shadow m-2">
           <div class="card-body">
             <span class="left">{{ key }}</span>
-            <span class="right">$ {{ item.USD }}</span>
+            <span class="right price">$ {{ item.USD }}</span>
           </div>
         </div>
       </div>
@@ -62,40 +62,14 @@ export default {
   },
 
   created() {
-    axios
-      .get(
-        `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${this.cryptocurrency}&tsyms=${this.currency}`
-      )
-      .then(response => {
-        this.cryptos = response.data;
-        this.loading = false;
-      })
-      .catch(e => {
-        this.errors.push(e);
-        this.loading = false;
-      });
-
-    axios
-      .get(
-        `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=${this.currency}`
-      )
-      .then(response => {
-        this.cryptocurrency = response.data.Data;
-        console.log(this.cryptocurrency);
-        this.loading = false;
-      })
-      .catch(e => {
-        this.errors.push(e);
-        this.loading = false;
-      });
-
     this.sizeRecognition();
+    this.fetchCryptos();
+    this.fetchCryptocurrency();
   },
 
   methods: {
     sizeElement() {
       this.screen = window.innerWidth;
-      //   console.log("Tamanho da tela " + this.screen + "px");
       return this.screen;
     },
 
@@ -118,18 +92,50 @@ export default {
       }
     },
 
+    fetchCryptos() {
+      axios
+        .get(
+          `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${this.cryptocurrency}&tsyms=${this.currency}`
+        )
+        .then(response => {
+          this.cryptos = response.data;
+          this.loading = false;
+        })
+        .catch(e => {
+          this.errors.push(e);
+          this.loading = false;
+        });
+    },
+
+    fetchCryptocurrency() {
+      axios
+        .get(
+          `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=${this.currency}`
+        )
+        .then(response => {
+          this.cryptocurrency = response.data.Data;
+          console.log(this.cryptocurrency);
+          this.loading = false;
+        })
+        .catch(e => {
+          this.errors.push(e);
+          this.loading = false;
+        });
+    },
+
     addItem(item) {
       this.cryptocurrency.push(item["CoinInfo"].Name);
-      console.log(this.cryptocurrency);
+      this.fetchCryptos();
+      this.fetchCryptocurrency();
     },
 
     removeItem(index) {
-      this.cryptocurrency.splice(index, 1);
+      this.$delete(this.cryptocurrency, index);
     }
   },
 
   mounted() {
-    console.log("Component mounted.");
+    // console.log("Component mounted.");
   }
 };
 </script>
@@ -142,15 +148,21 @@ span.left {
 }
 span.right {
   float: right;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 .currencyItem i {
   padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   color: grey;
 }
 
-.addButton {
+.price {
+  font-size: 25px;
+}
+
+/* .addButton {
   padding: 8px;
 }
 
@@ -168,7 +180,7 @@ span.right {
   padding: 5px;
   font-size: 18px;
   color: red;
-}
+} */
 
 .currencyItem i:hover {
   padding: 20px;
@@ -180,5 +192,6 @@ span.right {
   border-radius: 10px;
   margin: 10px;
   padding: 15px;
+  padding-top: 2px;
 }
 </style>
